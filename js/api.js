@@ -4,30 +4,30 @@ const signInBtn = document.getElementById("signIn");
 const container = document.querySelector(".container");
 
 signUpBtn.addEventListener("click", () => {
-  container.classList.add("right-panel-active");
+    container.classList.add("right-panel-active");
 });
 signInBtn.addEventListener("click", () => {
-  container.classList.remove("right-panel-active");
+    container.classList.remove("right-panel-active");
 });
 
 
 
 // 로딩시 로그인 확인
-const main_url = "https://server.beesolution.tk"
+const main_url = "http://127.0.0.1:8000"
 
-window.onload = async function signincheck(){
+window.onload = async function signincheck() {
     const payload = localStorage.getItem('payload')
 
-    if (payload){
-    const response = await fetch (`${main_url}/users/signin/`, {
-        headers : {
-            Authorization : localStorage.getItem('access')
-        },
-        method:"GET"
-    })
-    window.location.replace("main.html")
+    if (payload) {
+        const response = await fetch(`${main_url}/users/signin/`, {
+            headers: {
+                Authorization: localStorage.getItem('access')
+            },
+            method: "GET"
+        })
+        window.location.replace("main.html")
     }
-} 
+}
 
 
 // 회원가입 valid 함수
@@ -42,28 +42,28 @@ function password_valid(password, password2) {
 }
 
 // 회원가입
-async function handleSignup(){    
-    
+async function handleSignup() {
+
     var username = document.getElementById("username").value
     var password = document.getElementById("password").value
     var password2 = document.getElementById("password1").value
 
     if (password_valid(password, password2)) {
         const response = await fetch(`${main_url}/users/signup/`, {
-            headers:{
-                'content-type' : 'application/json',
+            headers: {
+                'content-type': 'application/json',
             },
-            method:'POST',
+            method: 'POST',
             body: JSON.stringify({
-                "username":username,
-                "password":password,
-                "password2":password2,
+                "username": username,
+                "password": password,
+                "password2": password2,
             })
         })
 
-        if (response.status == 400){
+        if (response.status == 400) {
             response_json = await response.json()
-            if (response_json.username){
+            if (response_json.username) {
                 alert(response_json.username)
             }
             else {
@@ -73,15 +73,15 @@ async function handleSignup(){
             var username = document.getElementById("username")
             var password = document.getElementById("password")
             var password2 = document.getElementById("password1")
-        
+
             username.value = null;
             password.value = null;
             password2.value = null;
         }
-        else{
+        else {
             window.location.replace("api.html")
         }
-        
+
     }
     else {
         window.location.reload()
@@ -90,21 +90,21 @@ async function handleSignup(){
 
 
 // 로그인
-async function handleSignin(){
+async function handleSignin() {
     var username = document.getElementById("in_username").value
     var password = document.getElementById("in_password").value
 
     const response = await fetch(`${main_url}/users/signin/`, {
         headers: {
-            'content-type' : 'application/json',
+            'content-type': 'application/json',
         },
-        method : 'POST',
-        body : JSON.stringify({
-            "username" : username,
+        method: 'POST',
+        body: JSON.stringify({
+            "username": username,
             "password": password
         })
     })
-    if (response.status == 400){
+    if (response.status == 400) {
         alert('입력한 정보가 정확하지 않습니다. 다시 시도해주세요.')
         window.location.reload()
 
@@ -116,22 +116,22 @@ async function handleSignin(){
         }, 2000)
         var username = document.getElementById("username")
         var password = document.getElementById("password")
-    
+
         username.value = null;
         password.value = null;
     }
-    else{
+    else {
         const response_json = await response.json()
 
-        localStorage.setItem('access',response_json.access);
+        localStorage.setItem('access', response_json.access);
         localStorage.setItem('refresh', response_json.refresh);
 
         const base64Url = response_json.access.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g,'/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c){
-            return '%' + ('00'+ c.charCodeAt(0).toString(16)).slice(-2);
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
-        
+
         localStorage.setItem('payload', jsonPayload);
 
         window.location.replace("main.html")
@@ -139,17 +139,17 @@ async function handleSignin(){
 }
 
 // 로그아웃
-function handleLogout(){
+function handleLogout() {
     localStorage.clear()
     window.location.replace("api.html")
 }
 
-async function handleKakaoSignin(){
+async function handleKakaoSignin() {
     Kakao.init('40ff260d348d97f586de1e3a150a7bcb');
-    
+
     Kakao.Auth.authorize({
         redirectUri: 'http://127.0.0.1:5500/kakao.html',
         prompts: 'login',
-        });
+    });
 
 }
