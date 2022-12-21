@@ -22,13 +22,11 @@
     <header></header>
     <div class="wrap">
         <div class="article_box">
-          <button id = 'back_button' type="button" class="btn btn-outline-dark"> 뒤로 가기 </button>
+          <button id='back_button' type="button" class="btn btn-outline-dark"> 다른 게시글 보러가기 </button>
             <div class = 'writer_info'>
               <div class ='writer_name'><p style="font-size: 30px;">익명</p></div>
               <p>카테고리</p>
               <input type="text" class="form-control" id="article_category" name = 'category' readonly>
-            </div>
-            <div class = 'content'>
               <p>고민내용</p>
               <textarea class="form-control" id="article_content" readonly></textarea>
             </div>
@@ -36,11 +34,11 @@
             <div class='article_btns'>
                 <button id='article_edit_btn' type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#article_edit_modal">수정</button>
                 <button id='article_del_btn' type="button" class="btn btn-outline-secondary" onclick="article_delete()">삭제</button>
-                <button type="button" class="btn btn-outline-secondary" onclick="location.href='solution_detail.html'">상황에 맞는 솔루션</button>
+                <button type="button" id='article_solution_btn' class="btn btn-outline-secondary" onclick="location.href='solution_detail.html'">위 고민에 추천된 AI솔루션 보러가기</button>
             </div>
         </div>
         <div class="comment_box">
-            
+    
           <h4>댓글</h4>
           <div class="input-group mb-3" id = 'input_box'>
             <input type="text" class="form-control" id="comment_input" placeholder="댓글을 입력해주세요"  aria-describedby="button-addon2">
