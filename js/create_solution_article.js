@@ -5,7 +5,7 @@ function handleLogout(){
 }
 const article_id = localStorage.getItem('article_id')
 
-const main_url = "http://127.0.0.1:8000"
+const main_url = "https://server.beesolution.tk"
 
 // 사진 미리보기
 const fileInput = document.getElementById("file")
@@ -73,7 +73,10 @@ async function handleUploadimg(){
         },
         method: 'POST',
         body: formdata
-    }).then(window.location.href = 'solution_detail.html')
+    }).then(setTimeout(function(){
+        console.log('5')
+        window.location.href = "solution_detail.html"
+        }, 500))
 }
 
 fetch("./navbar.html").then(response=>{

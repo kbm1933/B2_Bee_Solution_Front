@@ -10,7 +10,7 @@ const userId = personObj['user_id']
 const username = personObj['username']
 
 
-const main_url = "http://127.0.0.1:8000"
+const main_url = "https://server.beesolution.tk"
 
 async function create_UserChr(){
     const mbti = document.getElementById('input_mbti')

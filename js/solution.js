@@ -5,7 +5,7 @@ function handleLogout(){
 }
 
 
-const main_url = "http://127.0.0.1:8000"
+const main_url = "https://server.beesolution.tk"
 
 // 로딩 바 호출 후 0.5초 후 사라짐
 window.addEventListener('DOMContentLoaded', function()
