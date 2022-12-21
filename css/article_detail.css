@@ -195,6 +195,17 @@ button {
     height: 150px;
 }
 
+#back_button{
+
+    width: 200px;
+    background-color: #F5D10D;
+    border: 0;
+}
+
+#back_button:hover {
+    background-color: #fff;
+    color: black;
+}
 .content{
     margin-top: 15px;
 }

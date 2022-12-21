@@ -1,5 +1,5 @@
 
-window.onload = async function check_userchr(){
+window.onload = async function check_userchr() {
 
     let getLink = window.location.search;
     console.log(getLink)
@@ -10,31 +10,31 @@ window.onload = async function check_userchr(){
     const redirect_uri = 'http://127.0.0.1:5500/kakao.html'
     Kakao.init('40ff260d348d97f586de1e3a150a7bcb');
     async function request() {
-        const response = await fetch("https://server.beesolution.tk/users/signin/kakao/callback/",{
+        const response = await fetch("http://127.0.0.1:8000/users/signin/kakao/callback/", {
             headers: {
-                'content-type' : 'application/json',
+                'content-type': 'application/json',
             },
-            method : 'POST',
-            body : JSON.stringify({
-                "code" : getOnlyCode
+            method: 'POST',
+            body: JSON.stringify({
+                "code": getOnlyCode
             })
         })
         const response_json = await response.json()
         console.log(response_json)
 
-        localStorage.setItem('access',response_json.access);
+        localStorage.setItem('access', response_json.access);
         localStorage.setItem('refresh', response_json.refresh);
 
         const base64Url = response_json.access.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g,'/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c){
-            return '%' + ('00'+ c.charCodeAt(0).toString(16)).slice(-2);
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
 
         localStorage.setItem('payload', jsonPayload);
-      }
+    }
     request()
-    setTimeout(function(){
+    setTimeout(function () {
         window.location.replace('main.html');
     }, 1000);
 }
