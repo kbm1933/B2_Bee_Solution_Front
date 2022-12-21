@@ -92,7 +92,7 @@ async function load_comments() {
         page_btn += `<li class="page-item" ><a class="page-link" href="article_detail.html?page=${prev}">Prev</a></li>`
     }
 
-    if (response_json.next != null) {
+    if (myComment_list.next != null) {
         page_btn += `
         <li class="page-item" ><a class="page-link" href="article_detail.html?page=${next}">Next</a></li>
         `
@@ -109,7 +109,7 @@ async function load_comments() {
     let like = 'https://cdn-icons-png.flaticon.com/512/1067/1067447.png'
     let dislike = 'https://cdn-icons-png.flaticon.com/512/1067/1067346.png'
 
-    response_json.results.reverse().forEach(element => {
+    myComment_list.results.forEach(element => {
         if (userId != element.user) {
             if (element.likes.includes(userId)) {
 
