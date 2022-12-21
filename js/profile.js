@@ -4,7 +4,7 @@ function handleLogout(){
     window.location.replace("api.html")
 }
 
-const main_url = "http://127.0.0.1:8000"
+const main_url = "https://server.beesolution.tk"
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']

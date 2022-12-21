@@ -10,7 +10,7 @@ window.onload = async function check_userchr(){
     const redirect_uri = 'http://127.0.0.1:5500/kakao.html'
     Kakao.init('40ff260d348d97f586de1e3a150a7bcb');
     async function request() {
-        const response = await fetch("http://127.0.0.1:8000/users/signin/kakao/callback/",{
+        const response = await fetch("https://server.beesolution.tk/users/signin/kakao/callback/",{
             headers: {
                 'content-type' : 'application/json',
             },

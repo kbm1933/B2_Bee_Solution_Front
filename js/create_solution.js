@@ -5,7 +5,7 @@ function handleLogout(){
 }
 
 
-const main_url = "http://127.0.0.1:8000"
+const main_url = "https://server.beesolution.tk"
 
 // 사진 미리보기
 const fileInput = document.getElementById("file")
@@ -72,7 +72,11 @@ async function handleUploadimg(){
         },
         method: 'POST',
         body: formdata
-    }).then(window.location.replace('solution_collection.html'))
+    }).then(setTimeout(function(){
+        console.log('5')
+        window.location.replace('solution_collection.html');
+        }, 1000))
+    
 }
 
 
