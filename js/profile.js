@@ -4,7 +4,7 @@ function handleLogout(){
     window.location.replace("api.html")
 }
 
-const main_url = "https://server.beesolution.tk"
+const main_url = "http://127.0.0.1:8000"
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
@@ -57,6 +57,8 @@ async function userProfileUpload(){
     
     const formdata = new FormData()
     formdata.append('profile_img',img.files[0])
+
+    alert('프로필 이미지 저장완료')
 
     const response = await fetch(`${main_url}/users/${userId}/profile/`, {
         headers: { 

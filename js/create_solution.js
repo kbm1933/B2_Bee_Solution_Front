@@ -5,7 +5,7 @@ function handleLogout(){
 }
 
 
-const main_url = "https://server.beesolution.tk"
+const main_url = "http://127.0.0.1:8000"
 
 // 사진 미리보기
 const fileInput = document.getElementById("file")

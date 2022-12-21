@@ -13,7 +13,7 @@ signInBtn.addEventListener("click", () => {
 
 
 // 로딩시 로그인 확인
-const main_url = "https://server.beesolution.tk"
+const main_url = "http://127.0.0.1:8000"
 
 window.onload = async function signincheck(){
     const payload = localStorage.getItem('payload')

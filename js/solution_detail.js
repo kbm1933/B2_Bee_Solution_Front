@@ -1,6 +1,5 @@
 window.onload = async function load_solutions(){
-
-    const main_url = "https://server.beesolution.tk"
+    const main_url = "http://127.0.0.1:8000"
     const article_id = localStorage.getItem('article_id')
 
     const response = await fetch(`${main_url}/article/${article_id}/solution/`,{

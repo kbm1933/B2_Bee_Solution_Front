@@ -9,8 +9,7 @@ const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 const username = personObj['username']
 
-
-const main_url = "https://server.beesolution.tk"
+const main_url = "http://127.0.0.1:8000"
 
 async function create_UserChr(){
     const mbti = document.getElementById('input_mbti')
