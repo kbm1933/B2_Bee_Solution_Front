@@ -1,4 +1,4 @@
-window.onload = async function load_solutions() {
+window.onload = async function load_solutions(){
 
     const main_url = "http://127.0.0.1:8000"
     const article_id = localStorage.getItem('article_id')

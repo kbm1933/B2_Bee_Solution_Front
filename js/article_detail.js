@@ -3,6 +3,7 @@ const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 const article_id = localStorage.getItem('article_id')
 const main_url = "http://127.0.0.1:8000"
+
 const current_article_page = localStorage.getItem('current_article_page')
 
 window.onload = async function load_detail() {
@@ -26,7 +27,7 @@ window.onload = async function load_detail() {
     const category = document.getElementById('article_category')
     category.setAttribute('value', response_json.mbti + '/' + response_json.category)
     const content = document.getElementById('article_content')
-    content.setAttribute('value', response_json.content)
+    content.textContent = response_json.content
 
     //작성자 아니면 수정, 삭제 버튼 안보임
     if (response_json.user != userId) {

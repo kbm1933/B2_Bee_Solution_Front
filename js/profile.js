@@ -58,6 +58,8 @@ async function userProfileUpload() {
     const formdata = new FormData()
     formdata.append('profile_img', img.files[0])
 
+    alert('프로필 이미지 저장완료')
+
     const response = await fetch(`${main_url}/users/${userId}/profile/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access')
