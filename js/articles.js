@@ -124,7 +124,8 @@ window.onload = async function load_articles() {
 
 function save_article_id(article_id, current_page) {
     localStorage.setItem('article_id', article_id)
-    window.location.replace(`article_detail.html?articles_page=${current_page}`)
+    localStorage.setItem('current_article_page', current_page)
+    window.location.replace('article_detail.html')
 }
 
 function save_category_id(category_id) {

@@ -3,12 +3,10 @@ const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 const article_id = localStorage.getItem('article_id')
 const main_url = "http://127.0.0.1:8000"
-
-// 해당 게시글이 존재하는 페이지 번호
-const urlParams = new URL(location.href).searchParams;
-const articles_page = urlParams.get('articles_page')
+const current_article_page = localStorage.getItem('current_article_page')
 
 window.onload = async function load_detail() {
+
     const response = await fetch(`${main_url}/article/${article_id}/detail/`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('access'),
@@ -20,9 +18,10 @@ window.onload = async function load_detail() {
     response_json = await response.json()
     console.log(response_json)
 
+    
     const back_button = document.getElementById('back_button')
     back_button.onclick = function(){
-        window.location.replace(`articles.html?page=${articles_page}`)
+        window.location.replace(`articles.html?page=${current_article_page}`)
     }
     const category = document.getElementById('article_category')
     category.setAttribute('value', response_json.mbti + '/' + response_json.category)
