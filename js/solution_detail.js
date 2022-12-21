@@ -95,6 +95,11 @@ async function rating(solution_id, value) {
     alert('평가완료')
 }
 
+function go_profile(){
+    localStorage.setItem('category_id', 0)
+    window.location.replace('profile.html')
+}
+
 fetch("./navbar.html").then(response => {
     return response.text()
 })

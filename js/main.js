@@ -53,6 +53,10 @@ function save_category_id(category_id) {
     window.location.replace('articles.html')
 }
 
+function go_profile(){
+    localStorage.setItem('category_id', 0)
+    window.location.replace('profile.html')
+}
 
 fetch("./navbar.html").then(response => {
     return response.text()
