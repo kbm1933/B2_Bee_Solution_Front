@@ -173,13 +173,13 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
   }
 
   #img_box{
     width: 1200px;
-    margin : 100px 20px;
+    margin : 50px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,11 +187,16 @@ button {
     flex-wrap: wrap;
   }
 
+.btns_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 30px;
+}
   #make_solution_btn{
     width: 200px;
-    height: 200px;
-    margin-left: 50px;
-    border-radius: 20%;
+
 }
 
 .main_img{

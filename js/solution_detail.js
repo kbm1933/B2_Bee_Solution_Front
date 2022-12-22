@@ -54,7 +54,7 @@ window.onload = async function load_solutions(){
         btn_box.style.justifyContent = 'center'
 
         const best = document.createElement('button')
-        best.textContent = 'best'
+        best.textContent = '좋아요'
         best.style.border = '0'
         best.style.borderRadius = '20%'
         best.style.backgroundColor = '#F5D10D'
@@ -62,7 +62,7 @@ window.onload = async function load_solutions(){
             rating(element.id, 4)
         }
         const soso = document.createElement('button')
-        soso.textContent = 'soso'
+        soso.textContent = '글쎄요'
         soso.style.border = '0'
         soso.style.borderRadius = '20%'
         soso.style.backgroundColor = '#F5D10D'
@@ -70,7 +70,7 @@ window.onload = async function load_solutions(){
             rating(element.id, 2)
         }
         const bad = document.createElement('button')
-        bad.textContent = 'bad'
+        bad.textContent = '안좋아요'
         bad.style.border = '0'
         bad.style.borderRadius = '20%'
         bad.style.backgroundColor = '#F5D10D'
