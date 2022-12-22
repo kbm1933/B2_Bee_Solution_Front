@@ -6,6 +6,11 @@ window.onload = () => {
     load_solution_collection();
 }
 
+// window.onload = function (){
+//     var del = document.getElementsByName("delete");
+//     del.onclick = deleteImg()
+// }
+
 async function load_solution_collection() {
     const payload = localStorage.getItem('payload')
     const personObj = JSON.parse(payload)
@@ -23,26 +28,33 @@ async function load_solution_collection() {
     console.log(response_json)
 
     const img_box = document.getElementById('img_box')
-
     response_json.forEach(element => {
         const main_img = document.createElement('div')
+        main_img.className = 'main_img'
         main_img.style.display = 'flex'
         main_img.style.flexDirection = 'column'
-
-        const img_tag = document.createElement('a')
-
-        img_tag.href = '/solution_detail.html'
-        img_tag.onclick = function () {
-            localStorage.setItem("solution_id", element.id)
-        }
 
         const solution_img = document.createElement('img')
         solution_img.src = `${main_url}${element.solution_image}`
         solution_img.style.width = '250px';
         solution_img.style.height = '250px';
         solution_img.style.margin = '10px 15px';
-        solution_img.style.borderRadius = '15%'
+        solution_img.style.borderRadius = '15%';
 
+        const delete_img = document.createElement('img')
+        delete_img.src = 'delete.png'
+        delete_img.className = 'delete'
+        delete_img.style.width = '250px';
+        delete_img.style.height = '250px';
+        delete_img.style.margin = '10px 15px';
+        delete_img.style.borderRadius = '15%';
+
+        solution_img.onmouseover = function () {
+            solution_img.style.transform = 'scale(1.1)'
+        }
+        solution_img.onmouseout = function () {
+            solution_img.style.transform = 'scale(1)'
+        }
 
         const rating_box = document.createElement('div') //
         rating_box.classList.add('rating_box');
@@ -78,9 +90,16 @@ async function load_solution_collection() {
             console.log(element.id)
         }
 
-
         img_box.appendChild(main_img)
         main_img.appendChild(solution_img)
+        
+        if (element.user == userId) {
+            solution_img.style.boxShadow = '5px 5px 10px red';
+            delete_img.onclick = function () {
+                deleteImg(element.id)
+            }
+            main_img.appendChild(delete_img)
+        } 
 
 
         // main_img.appendChild(img_tag)        
@@ -99,7 +118,7 @@ async function load_solution_collection() {
 
 async function rating(solution_id, value) {
 
-    const response = await fetch(`${main_url}/article/worry/${solution_id}/`, {
+    const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
             'content-type': 'application/json'
@@ -113,7 +132,20 @@ async function rating(solution_id, value) {
     alert('평가완료')
 }
 
+async function deleteImg(solution_id){
+    if (confirm("직접 만든 솔루션을 삭제하시겠습니까?") == true){
+        const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json'
+            },
+            method: 'delete',
 
+        }).then(window.location.reload())
+    }else{
+        return;
+    }
+}
 
 // 로그아웃
 function handleLogout() {

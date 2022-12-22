@@ -193,3 +193,23 @@ button {
     margin-left: 50px;
     border-radius: 20%;
 }
+
+.main_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.delete{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+  
+.main_img:hover .delete {
+    opacity: 0.8;
+}
