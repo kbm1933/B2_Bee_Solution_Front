@@ -21,15 +21,18 @@ window.onload = async function check_userchr() {
     })
     if (response.status == 204) {
         window.location.replace('signup_userchr.html')
+    } else if(response.status == 200) {
+        response_json = await response.json()
+        const user_mbti = document.getElementById('input_mbti')
+        user_mbti.setAttribute("value",response_json.mbti)
     }
 }
 
 async function create_worry() {
-    const mbti = document.getElementById('input_mbti')
-    const mbti_txt = mbti.options[mbti.selectedIndex].text
     const category = document.getElementById('input_category')
     const category_txt = category.options[category.selectedIndex].text
     const worry = document.getElementById('input_worry').value
+    const mbti = document.getElementById('input_mbti').value
 
     console.log(mbti, category_txt, worry)
 
@@ -40,7 +43,7 @@ async function create_worry() {
         },
         method: 'POST',
         body: JSON.stringify({
-            "mbti": mbti_txt,
+            "mbti": mbti,
             "category": category_txt,
             "content": worry
         })

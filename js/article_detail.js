@@ -184,8 +184,6 @@ function article_delete() {
 }
 
 function article_edit() {
-    const mbti = document.getElementById('input_mbti')
-    const mbti_txt = mbti.options[mbti.selectedIndex].text
     const category = document.getElementById('input_category')
     const category_txt = category.options[category.selectedIndex].text
     const worry = document.getElementById('input_worry').value
@@ -197,7 +195,6 @@ function article_edit() {
         },
         method: "PUT",
         body: JSON.stringify({
-            "mbti": mbti_txt,
             "category": category_txt,
             "content": worry
         })
