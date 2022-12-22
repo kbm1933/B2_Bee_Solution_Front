@@ -232,10 +232,6 @@ button {
     white-space: nowrap;
   }
 
-  
-
-
-
 .preview-nickname {
     position: absolute;
     top: 75%;
@@ -246,3 +242,10 @@ button {
     background-color:rgba(0,0,0,.6);
     white-space: nowrap;
 }
+.spinner-border{
+    display: flex;
+    margin:auto;
+    margin-bottom: 10px;
+    top: auto;
+}  
+
