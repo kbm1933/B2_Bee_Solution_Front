@@ -53,21 +53,3 @@ async function create_UserChr() {
 
     window.location.replace('main.html')
 }
-async function skip() {
-    const response = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'content-type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify({
-            "user_chr_check": "True",
-        })
-    })
-    window.location.replace('main.html')
-}
-
-function save_category_id(category_id) {
-    localStorage.setItem('category_id', category_id)
-    window.location.replace("articles.html")
-}
