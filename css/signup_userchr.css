@@ -293,3 +293,13 @@ body, h4, .btn, p, form-select, form-control {
     align-items: center;
     display: inline-block;
 }
+
+.wrap{
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+.wrap>button{
+    width: 700px;
+    margin-left: 300px;
+}

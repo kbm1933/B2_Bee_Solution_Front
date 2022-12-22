@@ -17,6 +17,7 @@ async function create_UserChr() {
     const mbti_txt = mbti.options[mbti.selectedIndex].text
     const gender = document.getElementById('input_gender')
     var gender_txt = gender.options[gender.selectedIndex].text
+
     if (gender_txt === "남자") {
         var gender_txt = "M"
 
@@ -27,29 +28,35 @@ async function create_UserChr() {
     const age = document.getElementById('input_age').value
 
     console.log(mbti_txt, gender_txt, age)
-    const response1 = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'content-type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            "mbti": mbti_txt,
-            "gender": gender_txt,
-            "age": age
-        })
-    })
 
-    const response2 = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'content-type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify({
-            "user_chr_check": "True",
+    if (mbti_txt == "-- mbti를 골라주세요 --"|| gender_txt == "-- 성별을 골라주세요 --" || age == ""){
+        alert('아래 항목을 모두 골라주세요')
+        window.location.reload()
+    }else{
+        const response1 = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                "mbti": mbti_txt,
+                "gender": gender_txt,
+                "age": age
+            })
         })
-    })
-
-    window.location.replace('main.html')
+    
+        const response2 = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json',
+            },
+            method: 'PUT',
+            body: JSON.stringify({
+                "user_chr_check": "True",
+            })
+        })
+    
+        window.location.replace('main.html')
+    }
 }

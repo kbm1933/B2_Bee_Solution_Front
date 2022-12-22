@@ -25,8 +25,8 @@
                 <p>입력해주시면 성향을 반영해서<br> 솔루션을 진단해드립니다.</p>
                 <h4>MBTI</h4>
                 <div>
-                    <select class="form-select" id ='input_mbti'>
-                        <option selected>-- mbti를 골라주세요 -- </option>
+                    <select class="form-select" id ='input_mbti' required>
+                        <option selected>-- mbti를 골라주세요 --</option>
                         <option value="1">ENFP</option>
                         <option value="2">ENFJ</option>
                         <option value="3">ENTP</option>
@@ -47,19 +47,20 @@
                 </div>
                 <h4>카테고리</h4>
                 <div>
-                    <select class="form-select" id ='input_gender'>
-                        <option selected>-- 성별을 골라주세요 -- </option>
+                    <select class="form-select" id ='input_gender' required>
+                        <option selected>-- 성별을 골라주세요 --</option>
                         <option value="1">남자</option>
                         <option value="2">여자</option>
                     </select>
                 </div>
                 <h4>나이</h4>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="input_age" placeholder="나이를 입력해주세요">
+                    <input type="text" class="form-control" id="input_age" placeholder="나이를 입력해주세요" required>
                     <label for="floatingInput">나이를 입력해주세요</label>
                 </div>
-                <button type="button" class="btn btn-warning  btn-outline-dark" onclick=create_UserChr()>다음</button>
+                <button type="submit" class="btn btn-warning  btn-outline-dark" onclick=create_UserChr()>Solution 받으러 가기</button>
             </div>
+            <button type="button" class="btn btn-warning  btn-outline-dark" onclick="window.open('https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC')">MBTI 검사하러 가기</button>
         </div>
     </div>
     <script src="/js/signup_userchr.js"></script>

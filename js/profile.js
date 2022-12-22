@@ -15,6 +15,7 @@ const category_id = localStorage.getItem('category_id')
 window.onload = () => {
     loaduseruploadimg();
     load_articles();
+    user_mbti();
 }
 
 
@@ -252,9 +253,44 @@ async function changepassword() {
 }
 
 
+async function user_mbti() {
+    const response = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    response_json = await response.json()
+    const user_mbti = document.getElementById('input_mbti')
+    user_mbti.setAttribute("value", "내 MBTI는 "+response_json.mbti)
+}
+
+
+async function userMbtiUpload() {
+    const change_mbti = document.getElementById("change_mbti").value
+
+    alert("MBTI 변경 완료");
+
+    const response = await fetch(`${main_url}/users/${userId}/profile/changembti/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'PUT',
+        body: JSON.stringify({
+            "mbti": change_mbti,
+        })
+    })
+}
+
+
+
 fetch("./navbar.html").then(response => {
     return response.text()
 })
     .then(data => {
         document.querySelector("header").innerHTML = data
     })
+
+    

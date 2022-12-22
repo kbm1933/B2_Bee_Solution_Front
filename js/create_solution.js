@@ -65,27 +65,21 @@ async function handleUploadimg() {
     formdata.append('wise', wise)
     formdata.append('nickname', nickname)
     formdata.append('category', cate_str)
-        
-        var loadingbar = document.getElementById("roadingStatus");
-        if (loadingbar.style.display == "none") {
-            console.log("none block")
-            loadingbar.style.display = "block";
-        }
+
     const response = await fetch(`${main_url}/article/0/solution/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access')
         },
         method: 'POST',
         body: formdata
-    }).then(setTimeout(function () {        
-        setTimeout(function () { loadingbar.style.display = "none" }, 1000);
+    }).then(setTimeout(function () {
+        console.log('5')
         window.location.replace('solution_collection.html');
-
     }, 1000))
 
 }
 
-function go_profile() {
+function go_profile(){
     localStorage.setItem('category_id', 0)
     window.location.replace('profile.html')
 }
