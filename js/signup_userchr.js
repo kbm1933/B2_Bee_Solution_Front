@@ -12,6 +12,23 @@ const username = personObj['username']
 
 const main_url = "http://127.0.0.1:8000"
 
+window.onload = async function signincheck(){
+    const payload = localStorage.getItem('payload')
+
+    if (payload){
+    const response = await fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
+} 
+
 async function create_UserChr() {
     const mbti = document.getElementById('input_mbti')
     const mbti_txt = mbti.options[mbti.selectedIndex].text

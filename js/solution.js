@@ -7,6 +7,22 @@ function handleLogout() {
 
 const main_url = "http://127.0.0.1:8000"
 
+window.onload = async function signincheck(){
+    const payload = localStorage.getItem('payload')
+
+    if (payload){
+    const response = await fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
+} 
 // 로딩 바 호출 후 0.5초 후 사라짐
 window.addEventListener('DOMContentLoaded', function () {
     var loadingbar = document.getElementById("roadingStatus");

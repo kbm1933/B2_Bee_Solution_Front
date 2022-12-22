@@ -6,7 +6,22 @@ function handleLogout() {
 
 
 const main_url = "http://127.0.0.1:8000"
+window.onload = async function signincheck(){
+    const payload = localStorage.getItem('payload')
 
+    if (payload){
+    const response = await fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
+} 
 // 사진 미리보기
 const fileInput = document.getElementById("file")
 const handleFiles = (e) => {
