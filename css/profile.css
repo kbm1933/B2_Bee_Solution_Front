@@ -281,3 +281,15 @@ button {
     background-color: #F5D10D;
     color: black;
 }
+
+.user_mbti{
+    width: 300px;
+    margin-top: 20px;
+}
+
+.form-control{
+    margin-left: 5px;
+    background-color: #F5D10D;
+    color: black;
+    text-align: center;
+}

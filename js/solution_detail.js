@@ -149,3 +149,9 @@ function save_category_id(category_id) {
     localStorage.setItem('category_id', category_id)
     window.location.replace("articles.html")
 }
+
+// 로그아웃
+function handleLogout() {
+    localStorage.clear()
+    window.location.replace("api.html")
+}

@@ -234,6 +234,18 @@ button {
     color: black;
 }
 
+.mbti_change_finish>button{
+    width: 500px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border : 2px solid #F5D10D;
+}
+.mbti_change_finish>button:hover {
+    background-color: #F5D10D;
+    color: black;
+}
+
 .col-8>button{
     width: 500px;
     margin-left: 50px;
@@ -265,4 +277,10 @@ button {
 .changepassword{
     margin-top: 60px;
     margin-left: 220px;
+}
+
+.mbtitext{
+    margin-top: 50px;
+    margin-left: 220px;
+    margin-bottom: 30px;
 }
