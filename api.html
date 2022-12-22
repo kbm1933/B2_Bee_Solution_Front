@@ -35,9 +35,9 @@
                 </div> -->
               </div>
               <span>비밀번호는 8자리 이상 문자,숫자,특수문자 조합 필수</span>
-              <input type="username" class="form-control" name="username" id="username" placeholder="username" />
-              <input type="password" class="form-control" name="password" id="password" placeholder="password" />
-              <input type="password" class="form-control" name="password1" id="password1" placeholder="password check" />
+              <input type="username" class="form-control" name="username" id="username" placeholder="username" onkeypress="if(event.keyCode==13) {handleSignup();}"/>
+              <input type="password" class="form-control" name="password" id="password" placeholder="password" onkeypress="if(event.keyCode==13) {handleSignup();}"/>
+              <input type="password" class="form-control" name="password1" id="password1" placeholder="password check" onkeypress="if(event.keyCode==13) {handleSignup();}"/>
               <button type="button" class="form_btn" onclick="handleSignup()">회원가입</button>
             </form>
           </div>
@@ -59,8 +59,8 @@
                 </div> -->
               </div>
               <span>or use your account</span>
-              <input type="in_username" class="form-control" name="in_username" id="in_username" placeholder="username" />
-              <input type="password" class="form-control" name="in_password" id="in_password" placeholder="password" />
+              <input type="in_username" class="form-control" name="in_username" id="in_username" placeholder="username" onkeypress="if(event.keyCode==13) {handleSignin();}"/>
+              <input type="password" class="form-control" name="in_password" id="in_password" placeholder="password" onkeypress="if(event.keyCode==13) {handleSignin();}"/>
               <button type="button" class="form_btn" onclick="handleSignin()">로그인</button>
             </form>
           </div>
