@@ -1,3 +1,4 @@
+const main_url = "http://127.0.0.1:8000"
 
 window.onload = async function check_userchr() {
 
@@ -8,9 +9,9 @@ window.onload = async function check_userchr() {
     let getOnlyCode = getCode[1];
     console.log(getOnlyCode)
     const redirect_uri = 'http://127.0.0.1:5500/kakao.html'
-    Kakao.init('40ff260d348d97f586de1e3a150a7bcb');
+    Kakao.init('9e77b99c35e07f371b256bbff7b3ee2a');
     async function request() {
-        const response = await fetch("http://127.0.0.1:8000/users/signin/kakao/callback/", {
+        const response = await fetch(`${main_url}/users/signin/kakao/callback/`, {
             headers: {
                 'content-type': 'application/json',
             },
