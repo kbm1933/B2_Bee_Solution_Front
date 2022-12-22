@@ -198,12 +198,13 @@ background: #F5D10D;
       margin-right: 330px;
   }
   
-  #main_img{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-  }
+.main_img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
 
 .rating_box{
     display: flex;
@@ -213,4 +214,16 @@ background: #F5D10D;
 
 .btn{
     margin: 0 auto;
+}
+
+.delete{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.main_img:hover .delete {
+  opacity: 0.8;
 }

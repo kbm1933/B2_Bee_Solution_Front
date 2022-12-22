@@ -13,12 +13,16 @@ window.onload = async function load_solutions(){
     response_json = await response.json()
     console.log(response_json)
 
+    const payload = localStorage.getItem('payload')
+    const personObj = JSON.parse(payload)
+    const userId = personObj['user_id']
 
     const img_box = document.getElementById('img_box')
 
     response_json.solution.forEach(element => {
 
         const main_img = document.createElement('div')
+        main_img.className = 'main_img'
         main_img.style.display = 'flex'
         main_img.style.flexDirection = 'column'
 
@@ -28,6 +32,15 @@ window.onload = async function load_solutions(){
         solution_img.style.height = '250px';
         solution_img.style.margin = '10px 15px';
         solution_img.style.borderRadius = '15%';
+
+        const delete_img = document.createElement('img')
+        delete_img.src = 'delete.png'
+        delete_img.className = 'delete'
+        delete_img.style.width = '250px';
+        delete_img.style.height = '250px';
+        delete_img.style.margin = '10px 15px';
+        delete_img.style.borderRadius = '15%';
+
         solution_img.onmouseover = function () {
             solution_img.style.transform = 'scale(1.1)'
         }
@@ -65,6 +78,15 @@ window.onload = async function load_solutions(){
             rating(element.id, 0)
         }
 
+        if (element.user == userId) {
+            solution_img.style.boxShadow = '5px 5px 10px red';
+            delete_img.onclick = function () {
+                deleteImg(element.id)
+            }
+            main_img.appendChild(delete_img)
+        }
+
+
         btn_box.appendChild(best)
         btn_box.appendChild(soso)
         btn_box.appendChild(bad)
@@ -79,9 +101,8 @@ window.onload = async function load_solutions(){
 async function rating(solution_id, value) {
 
     const main_url = "http://127.0.0.1:8000"
-    const article_id = localStorage.getItem('article_id')
-
-    const response = await fetch(`${main_url}/article/${article_id}/solution/${solution_id}/`, {
+    
+    const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
             'content-type': 'application/json'
@@ -94,6 +115,23 @@ async function rating(solution_id, value) {
 
     alert('평가완료')
 }
+
+async function deleteImg(solution_id){
+    const main_url = "http://127.0.0.1:8000"
+    if (confirm("직접 만든 솔루션을 삭제하시겠습니까?") == true){
+        const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json'
+            },
+            method: 'delete',
+
+        }).then(window.location.reload())
+    }else{
+        return;
+    }
+}
+
 
 function go_profile(){
     localStorage.setItem('category_id', 0)
