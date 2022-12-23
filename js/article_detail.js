@@ -137,7 +137,7 @@ async function load_comments() {
 
                 output += `
                 <div class = 'comment_like'>
-                <input class="form-control" type="text" value="${element.content}" readonly>
+                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}">
                 <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
                 <img style = 'width:25px;' src='${like}'>${element.like_count}</button>
                 </div>
@@ -146,7 +146,7 @@ async function load_comments() {
             else {
                 output += `
                 <div class = 'comment_like'>
-                <input class="form-control" type="text" value="${element.content}" readonly>
+                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}">
                 <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
                 <img style = 'width:25px;' src='${dislike}'>${element.like_count}</button>
                 </div>
@@ -156,12 +156,12 @@ async function load_comments() {
             if (element.likes.includes(userId)) {
                 output += `
             <div class = 'comment_like'>
-            <input class="form-control" type="text" value="${element.content}" readonly>
+            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}" readonly>
             <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
             <img style = 'width:25px;' src='${like}'>${element.like_count}</button>
             </div>
             <div class='btn_box'>
-            <button type="button" class="btn btn-outline-dark" id="edit_comment_btn" onclick=save_comment_id(${element.id}) data-bs-toggle="modal" data-bs-target="#comment_edit_modal">
+            <button type="button" class="btn btn-outline-dark" id="edit_comment_btn" onclick="save_comment_id(${element.id}), ready_edit_comment(${element.id})" data-bs-toggle="modal" data-bs-target="#comment_edit_modal">
             <img style = 'width:20px;' src='https://cdn-icons-png.flaticon.com/512/1250/1250615.png'></button>
             <button type="button" class="btn btn-outline-dark" id="edit_delete" onclick=comment_delete(${element.id})>
             <img style = 'width:20px'; src='https://cdn-icons-png.flaticon.com/512/2907/2907762.png'></button>
@@ -171,12 +171,12 @@ async function load_comments() {
             else {
                 output += `
             <div class = 'comment_like'>
-            <input class="form-control" type="text" value="${element.content}" readonly>
+            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}" readonly>
             <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
             <img style = 'width:25px;' src='${dislike}'>${element.like_count}</button>
             </div>
             <div class='btn_box'>
-            <button type="button" class="btn btn-outline-dark" id="edit_comment_btn" onclick=save_comment_id(${element.id}) data-bs-toggle="modal" data-bs-target="#comment_edit_modal">
+            <button type="button" class="btn btn-outline-dark" id="edit_comment_btn" onclick="save_comment_id(${element.id}), ready_edit_comment(${element.id})" data-bs-toggle="modal" data-bs-target="#comment_edit_modal">
             <img style = 'width:20px;' src='https://cdn-icons-png.flaticon.com/512/1250/1250615.png'></button>
             <button type="button" class="btn btn-outline-dark" id="edit_delete" onclick=comment_delete(${element.id})>
             <img style = 'width:20px'; src='https://cdn-icons-png.flaticon.com/512/2907/2907762.png'></button>
@@ -201,8 +201,14 @@ function article_delete() {
 
 function ready_edit() {
     var content = document.getElementById('article_content').value
-    var inputcon = document.getElementById('input_worry')
-    inputcon.value = content
+    var inputcontent = document.getElementById('input_worry')
+    inputcontent.value = content
+}
+
+function ready_edit_comment(comment_id) {
+    var comment = document.getElementById(`commentid${comment_id}`).value
+    var inputcomment = document.getElementById('comment_edit_input')
+    inputcomment.value = comment
 }
 
 function article_edit() {
