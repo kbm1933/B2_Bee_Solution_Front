@@ -199,6 +199,12 @@ function article_delete() {
     window.location.replace('articles.html')
 }
 
+function ready_edit() {
+    var content = document.getElementById('article_content').value
+    var inputcon = document.getElementById('input_worry')
+    inputcon.value = content
+}
+
 function article_edit() {
     const category = document.getElementById('input_category')
     const category_txt = category.options[category.selectedIndex].text
