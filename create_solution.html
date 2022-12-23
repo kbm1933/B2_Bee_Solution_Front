@@ -17,10 +17,10 @@
     </style>
 </head>
 <body>
-    <header></header>
-    <div class="wrap">
+    <header></header>    
+    <div class="wrap">        
         <div class = 'left_box'>    
-            <form>
+            <form>                
                 <div class='input-group' style="width: 600px;">
                     <label class="input-group-text" for="images">사진 업로드</label>
                     <input class="form-control" type="file" id="file" accept="image/*">
@@ -61,10 +61,17 @@
                         <input type="checkbox" name="sol_category" value="4"> 4.음식<br>
                     </div>
                 </div>
+                
                 <button type="button" class="btn btn-warning btn-outline-dark" style="width: 100%; font-size: 20px;" onclick="handleUploadimg()">저장</button>
+                
             </form>
+            <div id="roadingStatus" style="display: none;">                        
+                    <div class="spinner-border text-dark" role="status">
+                    <span class="sr-only"></span>
+            </div>
         </div>
     </div>
+    
     <script src="../js/create_solution.js"></script>
 </body>
 </html>
