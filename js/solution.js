@@ -65,7 +65,7 @@ window.onload = () => { //solution_id 얻기 위해 두번 fetch
 //평가 버튼
 async function rating(solution_id, value) {
 
-    const response = await fetch(`${main_url}/article/worry/${solution_id}/`, {
+    const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
             'content-type': 'application/json'
