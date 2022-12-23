@@ -92,7 +92,7 @@ async function rating(solution_id, value) {
         })
 
     })
-    window.location.replace('main.html')
+    window.location.replace('articles.html')
 }
 
 function go_profile(){

@@ -233,10 +233,6 @@ button {
     white-space: nowrap;
   }
 
-  
-
-
-
 .preview-nickname {
     position: absolute;
     top: 75%;
@@ -246,4 +242,4 @@ button {
     color: white;
     background-color:rgba(0,0,0,.6);
     white-space: nowrap;
-}
+} 

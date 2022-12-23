@@ -81,6 +81,12 @@ async function handleUploadimg() {
     formdata.append('nickname', nickname)
     formdata.append('category', cate_str)
 
+    var loadingbar = document.getElementById("roadingStatus");
+        if (loadingbar.style.display == "none") {
+            console.log("none block")
+            loadingbar.style.display = "block";
+        }
+    
     const response = await fetch(`${main_url}/article/0/solution/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access')
