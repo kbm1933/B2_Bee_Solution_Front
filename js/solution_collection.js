@@ -4,6 +4,19 @@ const personObj = JSON.parse(payload)
 
 window.onload = () => {
     load_solution_collection();
+
+    if (payload){
+    const response = fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
 }
 
 // window.onload = function (){

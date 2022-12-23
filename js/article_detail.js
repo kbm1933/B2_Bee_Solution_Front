@@ -1,5 +1,21 @@
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
+window.onload = async function signincheck(){
+    const payload = localStorage.getItem('payload')
+
+    if (payload){
+    const response = await fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
+} 
 const userId = personObj['user_id']
 const article_id = localStorage.getItem('article_id')
 const main_url = "http://127.0.0.1:8000"
