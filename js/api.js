@@ -105,15 +105,12 @@ async function handleSignin() {
         })
     })
     if (response.status == 400) {
-        alert('입력한 정보가 정확하지 않습니다. 다시 시도해주세요.')
+        
+        response_json = await response.json()
+        let error_msg = response_json.message;
+        alert(error_msg)
         window.location.reload()
 
-        response_json = await response.json()
-        let addHtml = response_json.message;
-        document.getElementById('signin_message').innerHTML = addHtml;
-        setTimeout(() => {
-            document.getElementById('signin_message').remove()
-        }, 2000)
         var username = document.getElementById("username")
         var password = document.getElementById("password")
 
