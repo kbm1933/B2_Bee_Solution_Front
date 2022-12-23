@@ -304,6 +304,11 @@ body, h4, .btn {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.button_div>button{
+    height: 50px;
+    width: 300px;
+    font-size:x-large;
+}
 
 .form_div{
     width:90%;
