@@ -5,6 +5,19 @@ window.onload = async function load_solutions(){
     const main_url = "http://127.0.0.1:8000"
     const article_id = localStorage.getItem('article_id')
 
+    if (payload){
+        const response = await fetch (`${main_url}/users/signin/`, {
+            headers : {
+                Authorization : localStorage.getItem('access')
+            },
+            method:"GET"
+        })
+        }
+        else{
+        alert('로그인 후 진행해주세요')
+        window.location.replace("api.html")
+        }
+
     const response = await fetch(`${main_url}/article/${article_id}/solution/`, {
         header: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
@@ -15,7 +28,6 @@ window.onload = async function load_solutions(){
     response_json = await response.json()
     console.log(response_json)
 
-    const payload = localStorage.getItem('payload')
     const personObj = JSON.parse(payload)
     const userId = personObj['user_id']
 
