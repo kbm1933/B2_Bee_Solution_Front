@@ -44,6 +44,7 @@ async function load_message(check){
                         method : "DELETE"
                     })
                     table.deleteRow(add_row.rowIndex)
+                    alert("삭제 완료")
                 }
 
         }
