@@ -23,6 +23,7 @@
     <div class="wrap">
         <div class="article_box">
           <button id='back_button' type="button" class="btn btn-outline-dark"> 다른 게시글 보러가기 </button>
+          <button id='back_button' type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#messageModal"> 쪽지보내기 </button>
             <div class = 'writer_info'>
               <div class ='writer_name'><p style="font-size: 30px;">익명</p></div>
               <p>카테고리</p>
@@ -81,7 +82,7 @@
       </div>
     </div>
   </div>
-
+ <!-- comment edit Modal -->
   <div class="modal fade" id="comment_edit_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -95,6 +96,26 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="comment_edit()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- message Modal -->
+  <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="messageModalLabel">쪽지 보내기</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">                            
+            <input type="text" class="form-control" id="message_title" placeholder="제목을 입력해주세요">
+            <input type="text" class="form-control" id="message_content" placeholder="내용을 입력해주세요">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="send_msg_btn">보내기</button>
         </div>
       </div>
     </div>
