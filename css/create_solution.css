@@ -197,6 +197,7 @@ button {
 }
 
 .right_box{
+    z-index: 8;
     margin-top: 50px;
     display: flex;
     flex-direction: column;

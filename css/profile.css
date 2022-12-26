@@ -293,3 +293,62 @@ button {
     color: black;
     text-align: center;
 }
+
+.mysolutions_wrap{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: larger;
+}
+
+.mysolutions_box{
+    width: 800px;
+    height: 50px;
+    background-color: #F5D10D;
+    color: black;
+    text-align : center;
+    padding : 10px 0;
+}
+
+
+.mysolutions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+#img_box {
+    width: 1200px;
+    margin : 100px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.main_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.delete{
+position: absolute;
+top: 0px;
+left: 0px;
+opacity: 0;
+transition: opacity 0.5s linear;
+}
+
+.main_img:hover .delete {
+opacity: 0.8;
+}
