@@ -32,6 +32,7 @@ window.onload = () => {
     loaduseruploadimg();
     load_articles();
     user_mbti();
+    load_solution();
 }
 
 
@@ -268,7 +269,7 @@ async function changepassword() {
     }
 }
 
-
+// 내 MBTI 가져오기
 async function user_mbti() {
     const response = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
         headers: {
@@ -283,6 +284,7 @@ async function user_mbti() {
 }
 
 
+// 가져온 MBTI 수정
 async function userMbtiUpload() {
     const change_mbti = document.getElementById("change_mbti").value
 
@@ -299,6 +301,100 @@ async function userMbtiUpload() {
         })
     })
 }
+
+
+// 내가 로그인 되있을때만 게시글 볼 수 있게
+async function load_solution() {
+    load_solution_collection();
+
+    if (payload){
+    const response = fetch (`${main_url}/users/signin/`, {
+        headers : {
+            Authorization : localStorage.getItem('access')
+        },
+        method:"GET"
+    })
+    }
+    else{
+    alert('로그인 후 진행해주세요')
+    window.location.replace("api.html")
+    }
+}
+
+// 내가 작성한 명언 보기
+async function load_solution_collection() {
+    const payload = localStorage.getItem('payload')
+    const personObj = JSON.parse(payload)
+    const userId = personObj['user_id']
+
+    const response = await fetch(`${main_url}/article/mysolution/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET',
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    const img_box = document.getElementById('img_box')
+    response_json.forEach(element => {
+        const main_img = document.createElement('div')
+        main_img.className = 'main_img'
+        main_img.style.display = 'flex'
+        main_img.style.flexDirection = 'column'
+
+        const solution_img = document.createElement('img')
+        solution_img.src = `${main_url}${element.solution_image}`
+        solution_img.style.width = '250px';
+        solution_img.style.height = '250px';
+        solution_img.style.margin = '10px 15px';
+        solution_img.style.borderRadius = '15%';
+
+        const delete_img = document.createElement('img')
+        delete_img.src = 'delete.png'
+        delete_img.className = 'delete'
+        delete_img.style.width = '250px';
+        delete_img.style.height = '250px';
+        delete_img.style.margin = '10px 15px';
+        delete_img.style.borderRadius = '15%';
+
+        solution_img.onmouseover = function () {
+            solution_img.style.transform = 'scale(1.1)'
+        }
+        solution_img.onmouseout = function () {
+            solution_img.style.transform = 'scale(1)'
+        }
+
+        img_box.appendChild(main_img)
+        main_img.appendChild(solution_img)
+        
+ 
+        solution_img.style.boxShadow = '5px 5px 10px red';
+        delete_img.onclick = function () {
+            deleteImg(element.id)
+        }
+        main_img.appendChild(delete_img)
+
+    })
+}
+
+// 솔루션 삭제
+async function deleteImg(solution_id){
+    if (confirm("직접 만든 솔루션을 삭제하시겠습니까?") == true){
+        const response = await fetch(`${main_url}/article/solution/${solution_id}/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json'
+            },
+            method: 'delete',
+
+        }).then(window.location.reload())
+    }else{
+        return;
+    }
+}
+
 
 
 
