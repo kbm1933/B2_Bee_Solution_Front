@@ -306,6 +306,32 @@ function go_profile(){
     window.location.replace('profile.html')
 }
 
+
+// 쪽지 보내는 함수
+function send_message() {
+    const message_title = document.getElementById('message_title').value
+    const message_content =  document.getElementById("message_content").value 
+    const receiver_id = localStorage.getItem('article_user_id')
+
+
+    const response = fetch(`${main_url}/message/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "title": message_title,
+            'content' : message_content,
+            'sender' : userId,
+            'receiver' : receiver_id,
+        })
+    })
+    window.location.replace('message_send.html')
+}
+
+
+
 fetch("./navbar.html").then(response => {
     return response.text()
 })

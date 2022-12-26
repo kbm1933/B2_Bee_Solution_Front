@@ -195,3 +195,13 @@ button {
 .modal-body{
     height:300px;
 }
+
+.msg_title{
+    color: black;
+    cursor: pointer;
+}
+
+.msg_title:hover{
+    font-size: larger;
+    color: #F5D10D;
+}
