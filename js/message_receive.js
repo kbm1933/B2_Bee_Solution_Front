@@ -28,7 +28,7 @@ async function load_message(check){
             const add_row = table.insertRow();
 
             const msg_title = add_row.insertCell(0);
-            msg_title.innerHTML = `<a data-bs-toggle="modal" data-bs-target="#messageModal"><u>${element.title}</u></a>`
+            msg_title.innerHTML = `<a class="msg_title" data-bs-toggle="modal" data-bs-target="#messageModal"><u>${element.title}</u></a>`
             msg_title.onclick=function(){ //title 누르면 content 모달 창 띄움
                 const modal_title = document.getElementById('messageModalLabel')
                 modal_title.textContent = `${element.title}   [보낸 사람 : ${element.sender}] `
