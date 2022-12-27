@@ -75,7 +75,7 @@ async function load_articles() {
             output += `
             <div class="card text-center" >
                 <div class="card-body">
-                    <p class="card-text" align="right">게시글에 새로운 댓글이 있습니다!
+                    <p class="card-text" align="right">내 게시글에 새로운 댓글이 달렸습니다!
                     <a href="javascript:ignore(${element.id});" class="btn btn-warning btn-outline-dark">닫기</a></p>
                     <h5 class="card-title">${element.category} / ${element.mbti}</h5>
                     <p class="card-text">${element.content}</p>

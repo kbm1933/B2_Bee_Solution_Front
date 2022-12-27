@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>Beesolution</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/promotion.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <style> 
@@ -25,12 +25,32 @@
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>
     <div class="row">
         <div class="wrap">
-           
-            <div class='left_box'>
+            <div class='left_box' id='left_box'>
                 <h2>AI BeeSolution</h2>
+                <p>AI 비솔루션은 AI를 활용해 유저들의 고민을 분석해서</p>
+                <p>이에 맞는 적절한 솔루션을 제공하는 인공지능입니다.</p>
+                <p>자신의 MBTI와 고민의 카테고리를 선택하시고 고민의 내용을 입력해주세요.</p>
                 <h4>MBTI</h4>
                 <div class="form_div">
-                    <input class="form-control" id="input_mbti" type="text"  readonly>
+                    <select class="form-select" id = 'input_mbti'>
+                        <option selected>-- mbti를 골라주세요 -- </option>
+                        <option value="ENFP">ENFP</option>
+                        <option value="ENFJ">ENFJ</option>
+                        <option value="ENTP">ENTP</option>
+                        <option value="ENTJ">ENTJ</option>
+                        <option value="ESFP">ESFP</option>
+                        <option value="ESFJ">ESFJ</option>
+                        <option value="ESTP">ESTP</option>
+                        <option value="ESTJ">ESTJ</option>
+                        <option value="INFP">INFP</option>
+                        <option value="INFJ">INFJ</option>
+                        <option value="INTP">INTP</option>
+                        <option value="INTJ">INTJ</option>
+                        <option value="ISFP">ISFP</option>
+                        <option value="ISFJ">ISFJ</option>
+                        <option value="ISTP">ISTP</option>
+                        <option value="ISTJ">ISTJ</option>
+                    </select>
                 </div>
                 <h4>Category</h4>
                 <div class="form_div">
@@ -49,20 +69,26 @@
                 <div class="button_div">
                     <button type="button" class="btn btn-warning btn-outline-dark" onclick=create_worry()>AI bee의 고민 분석</button>
                 </div>
-                <button type="button" class="btn btn-warning btn-outline-dark" onclick = save_category_id(0)>고민 보러가기</button>
-                <button type="button" class="btn btn-warning btn-outline-dark" onclick="location.href='solution_collection.html'">명언집 보러가기</button>  
             </div>
-            
-            <div class="sns">
-                <h2> 친구들과 BeeSolution을 더욱 재밌게 즐기고 싶다면?</h2>
-                <button type="button" class="btn btn-warning btn-outline-dark" onclick="sns_share('facebook');return false;" id="facebook" target="_self" title="페이스북 새창열림"><span class="skip">페이스북</span></a>
-                <button type="button" class="btn btn-warning btn-outline-dark" onclick="sns_share('twitter');return false;" id="twitter" target="_self" title="트위터 새창열림"><span class="skip">트위터</span></a>
-                <button type="button" class="btn btn-warning btn-outline-dark" onclick="sns_share('band');return false;" id="band" target="_self" title="네이버밴드 새창열림"><span class="skip">네이버밴드</span></a>
-            </div>  
+            <div class="solution_box" id="solution_box">
+                <h2>Bee solution 의 고민 해결</h2>
+                <div id="roadingStatus" style="display: none;">
+                    <span>Bee Solution AI가 고민을 분석 중입니다.</span>
+                    <br><br><br>
+                    <div class="spinner-border text-dark" role="status" >
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <div id="solution">
+                </div>
+                    <span></span>
+                <div class="button_div" id ="signup_btn" style="display: none;">
+                    <button type="button" class="btn btn-warning btn-outline-dark" onclick="window.location.replace('api.html')">회원가입하고 고민상담</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<script src="/js/main.js"></script>
+<script src="/js/promotion.js"></script>
 </body>
 </html>
