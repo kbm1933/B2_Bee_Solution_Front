@@ -209,12 +209,12 @@ button {
     color: black;
 }
 
-.articles_btn>button{
+.mbti_btn>button{
     border : 3px solid #F5D10D;
     width: 300px;
     margin-top: 20px;
 }
-.articles_btn>button:hover {
+.mbti_btn>button:hover {
     background-color: #F5D10D;
     color: black;
 }
