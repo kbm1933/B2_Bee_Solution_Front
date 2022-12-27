@@ -4,7 +4,26 @@ const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 
 window.onload=()=>{
+    check_alarm();
     load_message(1);
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
 }
 
 //check = 0 이면 받은 메세지 호출, 1이면 보낸 메세지 호출

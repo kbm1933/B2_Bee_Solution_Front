@@ -23,6 +23,29 @@ window.onload = async function signincheck(){
     }
 } 
 
+window.onload = () => {
+    check_alarm();
+    load_articles();
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
+
 async function get_articles(page_param) {
     if (page_param == '') {
         const response = await fetch(`${main_url}/article/${category_id}/`, {
@@ -50,7 +73,7 @@ async function get_articles(page_param) {
     return response_json
 }
 
-window.onload = async function load_articles() {
+async function load_articles() {
     page_param = location.search
     var page = parseInt(page_param.split('=')[1])
 

@@ -1,5 +1,6 @@
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
+const main_url = "http://127.0.0.1:8000"
 window.onload = async function signincheck(){
     const payload = localStorage.getItem('payload')
 
@@ -18,11 +19,35 @@ window.onload = async function signincheck(){
 } 
 const userId = personObj['user_id']
 const article_id = localStorage.getItem('article_id')
-const main_url = "http://127.0.0.1:8000"
+
+
+window.onload = () => {
+    check_alarm();
+    load_detail()
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
+
 
 const current_article_page = localStorage.getItem('current_article_page')
 
-window.onload = async function load_detail() {
+async function load_detail() {
 
     const response = await fetch(`${main_url}/article/${article_id}/detail/`, {
         headers: {

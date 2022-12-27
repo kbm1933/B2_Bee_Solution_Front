@@ -243,3 +243,9 @@ button {
     background-color:rgba(0,0,0,.6);
     white-space: nowrap;
 } 
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}
