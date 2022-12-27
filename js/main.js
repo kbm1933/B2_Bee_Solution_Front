@@ -79,8 +79,10 @@ function go_profile(){
 
 // sns로 beesolution 공유하기
 function sns_share(sns) {
-    var thisUrl = document.URL;
+    // var thisUrl = `${main_url}/article/worry/promotion/`
+    var thisUrl = `http://127.0.0.1:5500/promotion.html`
     var snsTitle = "Beesolution에서 고민 해결할 사람?";
+    
     if( sns == 'facebook' ) {
         var url = "http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(thisUrl);
         window.open(url, "", "width=486, height=286");
