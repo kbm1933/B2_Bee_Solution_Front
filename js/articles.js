@@ -129,7 +129,7 @@ window.onload = async function load_articles() {
             <div class="card-body">
                 <h5 class="card-title">${element.category} / ${element.mbti}</h5>
                 <p class="card-text">${element.content}</p>
-                <a href="javascript:save_article_id(${element.id},${current_page});" class="btn btn-warning btn-outline-dark">게시글 보기</a>
+                <a href="javascript:save_article_id(${element.id},${element.user},${current_page});" class="btn btn-warning btn-outline-dark">게시글 보기</a>
             </div>
         </div>
         `
@@ -137,8 +137,9 @@ window.onload = async function load_articles() {
     articles_box.innerHTML = output
 }
 
-function save_article_id(article_id, current_page) {
+function save_article_id(article_id, article_user_id, current_page) {
     localStorage.setItem('article_id', article_id)
+    localStorage.setItem('article_user_id', article_user_id)
     localStorage.setItem('current_article_page', current_page)
     window.location.replace('article_detail.html')
 }

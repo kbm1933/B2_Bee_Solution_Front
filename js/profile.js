@@ -7,6 +7,7 @@ function handleLogout() {
 const main_url = "http://127.0.0.1:8000"
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
+
 window.onload = async function signincheck(){
     const payload = localStorage.getItem('payload')
 
@@ -27,15 +28,12 @@ const userId = personObj['user_id']
 const username = personObj['username']
 const category_id = localStorage.getItem('category_id')
 
-
 window.onload = () => {
     loaduseruploadimg();
     load_articles();
     user_mbti();
     load_solution();
 }
-
-
 
 // 로딩 될때 user 이름과 프로필 사진을 불러옴
 async function loaduseruploadimg() {
@@ -283,25 +281,34 @@ async function user_mbti() {
     user_mbti.setAttribute("value", "내 MBTI는 "+response_json.mbti)
 }
 
-
 // 가져온 MBTI 수정
 async function userMbtiUpload() {
     const change_mbti = document.getElementById("change_mbti").value
+    var mbtilist = ['ENFP','ENFJ','ENTP','ENTJ','ESFP','ESFJ','ESTP','ESTJ','INFP','INFJ','INTP','INTJ','ISFP','ISFJ','ISTP','ISTJ']
 
-    alert("MBTI 변경 완료");
-
-    const response = await fetch(`${main_url}/users/${userId}/profile/changembti/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'content-type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify({
-            "mbti": change_mbti,
-        })
-    })
+    if (mbtilist.includes(change_mbti)) {
+        var result = confirm("MBTI를 변경하시겠습니까?");
+        if (result) {
+            const response = await fetch(`${main_url}/users/${userId}/profile/changembti/`, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                    'content-type': 'application/json',
+                },
+                method: 'PUT',
+                body: JSON.stringify({
+                    "mbti": change_mbti,
+                })
+            })
+            alert("MBTI가 변경 되었습니다.");
+            window.location.reload()
+        }else {
+            alert("MBTI 변경이 취소되었습니다.");
+        }
+    } else {
+        alert("입력하신 MBTI가 정확하지 않습니다. 대문자로 4글자를 정확히 입력해주세요.");
+        window.location.reload()
+    }
 }
-
 
 // 내가 로그인 되있을때만 게시글 볼 수 있게
 async function load_solution() {
@@ -345,14 +352,14 @@ async function load_solution_collection() {
         main_img.style.flexDirection = 'column'
 
         const solution_img = document.createElement('img')
-        solution_img.src = `${main_url}${element.solution_image}`
+        solution_img.src = `${main_url}${element.solution.solution_image}`
         solution_img.style.width = '250px';
         solution_img.style.height = '250px';
         solution_img.style.margin = '10px 15px';
         solution_img.style.borderRadius = '15%';
 
         const delete_img = document.createElement('img')
-        delete_img.src = 'delete.png'
+        delete_img.src = 'imgs/delete.png'
         delete_img.className = 'delete'
         delete_img.style.width = '250px';
         delete_img.style.height = '250px';
@@ -370,11 +377,13 @@ async function load_solution_collection() {
         main_img.appendChild(solution_img)
         
  
-        solution_img.style.boxShadow = '5px 5px 10px red';
-        delete_img.onclick = function () {
-            deleteImg(element.id)
-        }
-        main_img.appendChild(delete_img)
+        if (element.solution.user == userId) {
+            solution_img.style.boxShadow = '5px 5px 10px red';
+            delete_img.onclick = function () {
+                deleteImg(element.id)
+            }
+            main_img.appendChild(delete_img)
+        } 
 
     })
 }
@@ -395,14 +404,9 @@ async function deleteImg(solution_id){
     }
 }
 
-
-
-
 fetch("./navbar.html").then(response => {
     return response.text()
 })
     .then(data => {
         document.querySelector("header").innerHTML = data
     })
-
-    
