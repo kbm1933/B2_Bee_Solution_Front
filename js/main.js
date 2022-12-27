@@ -74,19 +74,24 @@ async function create_worry() {
 
     console.log(mbti, category_txt, worry)
 
-    const response = await fetch(`${main_url}/article/worry/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
-            'content-type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            "mbti": mbti,
-            "category": category_txt,
-            "content": worry
+    if (category_txt == "-- 카테고리를 골라주세요 --" || worry == ""){
+        alert('아래 항목을 모두 적어주세요')
+        window.location.reload()
+    }else{
+        const response = await fetch(`${main_url}/article/worry/`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                "mbti": mbti,
+                "category": category_txt,
+                "content": worry
+            })
         })
-    })
-    window.location.replace('solution.html')
+        window.location.replace('solution.html')
+    }
 }
 
 function save_category_id(category_id) {
