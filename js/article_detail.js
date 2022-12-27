@@ -35,7 +35,6 @@ window.onload = async function load_detail() {
     response_json = await response.json()
     console.log(response_json)
 
-    
     const back_button = document.getElementById('back_button')
     back_button.onclick = function(){
         window.location.replace(`articles.html?page=${current_article_page}`)
@@ -51,6 +50,11 @@ window.onload = async function load_detail() {
         article_edit.style.visibility = 'hidden'
         const article_del = document.getElementById('article_del_btn')
         article_del.style.visibility = 'hidden'
+    }
+    user = response_json.user
+    const send_message = document.getElementById('send_msg_btn')
+    send_message.onclick = function(){
+        sended_message(user);
     }
     load_comments();
 }
@@ -285,6 +289,24 @@ async function comment_like(comment_id) {
         method: "POST"
     })
     window.location.reload()
+}
+
+async function sended_message(receiver_id){
+    const title = document.getElementById('message_title').value
+    const content = document.getElementById('message_content').value
+    const response = await fetch(`${main_url}/message/1/`,{
+        headers: {
+            "Authorization" : "Bearer " + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "title": title,
+            "content": content,
+            "receiver":receiver_id
+        })
+    })
+    console.log("dddd",receiver_id)  
 }
 
 function handleLogout() {
