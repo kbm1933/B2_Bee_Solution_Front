@@ -162,7 +162,7 @@ async function load_comments() {
 
                 output += `
                 <div class = 'comment_like'>
-                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}">
+                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content} - ${element.user.userchr.mbti}">                
                 <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
                 <img style = 'width:25px;' src='${like}'>${element.like_count}</button>
                 </div>
@@ -171,7 +171,7 @@ async function load_comments() {
             else {
                 output += `
                 <div class = 'comment_like'>
-                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}">
+                <input class="form-control" id="commentid${element.id}" type="text" value="${element.content} - ${element.user.userchr.mbti}">                
                 <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
                 <img style = 'width:25px;' src='${dislike}'>${element.like_count}</button>
                 </div>
@@ -181,7 +181,7 @@ async function load_comments() {
             if (element.likes.includes(userId)) {
                 output += `
             <div class = 'comment_like'>
-            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}" readonly>
+            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content} - ${element.user.userchr.mbti}" readonly>            
             <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
             <img style = 'width:25px;' src='${like}'>${element.like_count}</button>
             </div>
@@ -196,7 +196,7 @@ async function load_comments() {
             else {
                 output += `
             <div class = 'comment_like'>
-            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content}" readonly>
+            <input class="form-control" id="commentid${element.id}" type="text" value="${element.content} - ${element.user.userchr.mbti}" readonly>            
             <button type = 'button' class='like_btn' onclick=comment_like(${element.id})>
             <img style = 'width:25px;' src='${dislike}'>${element.like_count}</button>
             </div>
@@ -258,6 +258,7 @@ function article_edit() {
 function comment_create() {
 
     const inputItem = document.getElementById('comment_input').value
+    
     const response = fetch(`${main_url}/article/${article_id}/comment/`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('access'),
