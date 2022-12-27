@@ -22,10 +22,31 @@ window.onload = async function signincheck(){
     window.location.replace("api.html")
     }
 }
+window.onload = () => {
+    check_alarm();
+    load_articles();
+}
 
-window.onload = async function load_articles() {
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
 
-    const response = await fetch(`${main_url}/article/alarm/`, {
+async function load_articles() {
+    const response = await fetch(`${main_url}/article/alarm/0/`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('access'),
             "content-type": "application/json"

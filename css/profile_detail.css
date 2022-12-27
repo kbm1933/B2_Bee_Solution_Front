@@ -284,3 +284,9 @@ button {
     margin-left: 220px;
     margin-bottom: 30px;
 }
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}

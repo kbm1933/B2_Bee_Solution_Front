@@ -23,6 +23,25 @@ window.onload = async function signincheck(){
     window.location.replace("api.html")
     }
 } 
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
+
 // 로딩 바 호출 후 0.5초 후 사라짐
 window.addEventListener('DOMContentLoaded', function () {
     var loadingbar = document.getElementById("roadingStatus");
@@ -75,6 +94,7 @@ window.onload = () => { //solution_id 얻기 위해 두번 fetch
                     })
             }), 1000
     );
+    check_alarm();
 }
 
 

@@ -218,3 +218,9 @@ button {
 .main_img:hover .delete {
     opacity: 0.8;
 }
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}

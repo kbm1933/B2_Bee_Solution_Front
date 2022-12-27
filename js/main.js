@@ -26,8 +26,12 @@ window.onload = async function signincheck(){
 } 
 const userId = personObj['user_id']
 const username = personObj['username']
+window.onload = () => {
+    check_alarm();
+    check_userchr();
+}
 
-window.onload = async function check_userchr() {
+async function check_userchr() {
     const response = await fetch(`${main_url}/users/signup/${userId}/userchr/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
@@ -41,6 +45,24 @@ window.onload = async function check_userchr() {
         response_json = await response.json()
         const user_mbti = document.getElementById('input_mbti')
         user_mbti.setAttribute("value",response_json.mbti)
+    }
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
     }
 }
 

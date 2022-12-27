@@ -21,7 +21,26 @@ window.onload = async function signincheck(){
     alert('로그인 후 진행해주세요')
     window.location.replace("api.html")
     }
-} 
+}
+
+window.onload = async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
+
 // 사진 미리보기
 const fileInput = document.getElementById("file")
 const handleFiles = (e) => {

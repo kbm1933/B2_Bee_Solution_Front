@@ -205,3 +205,9 @@ button {
     font-size: larger;
     color: #F5D10D;
 }
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}

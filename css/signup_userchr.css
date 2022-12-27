@@ -303,3 +303,9 @@ body, h4, .btn, p, form-select, form-control {
     width: 700px;
     margin-left: 300px;
 }
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}
