@@ -375,7 +375,7 @@ async function load_solution_collection() {
 
         img_box.appendChild(main_img)
         main_img.appendChild(solution_img)
-        
+
  
         if (element.solution.user == userId) {
             solution_img.style.boxShadow = '5px 5px 10px red';
