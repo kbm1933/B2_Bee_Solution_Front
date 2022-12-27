@@ -48,7 +48,7 @@ window.onload = async function load_solutions(){
         solution_img.style.borderRadius = '15%';
 
         const delete_img = document.createElement('img')
-        delete_img.src = 'delete.png'
+        delete_img.src = 'imgs/delete.png'
         delete_img.className = 'delete'
         delete_img.style.width = '250px';
         delete_img.style.height = '250px';

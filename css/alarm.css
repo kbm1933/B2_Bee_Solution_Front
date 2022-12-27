@@ -1,0 +1,348 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* navbar css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:white;
+    padding: 8px 12px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 15;
+}
+
+.navbar>a{
+    color: #F5D10D;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar__logo {
+    font-size: 24px;
+    color: black;
+}
+
+.navbar__logo i {
+    color: #F5D10D;
+}
+
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.navbar__menu li {
+    padding: 8px 12px;
+
+}
+
+.navbar__menu :hover {
+    border-radius: 4px;
+}
+
+#category_menu {
+    height: 250px;
+    width: 200px;
+    overflow-y: scroll;
+}
+
+#mbti_btn2 {
+    margin-left: 30px;
+    display: none;
+    background-color: rgb(247, 247, 208);
+    width: 100px;
+}
+
+#mbti_btn:hover #mbti_btn2 {
+    display: block;
+}
+
+@media screen and (max-width: 935px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar__menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar__icons {
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar__toogleBtn {
+        display: block;
+    }
+
+    .navbar__menu.active,
+    .navbar__icons.active {
+        display: flex;
+    }
+}
+.wrap{
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 750px;
+}
+
+.left_box{  
+    margin:auto;
+    position: relative;
+    align-items: center;
+    background-color: #F5D10D;
+    text-align: center;
+    height: 70%;
+    padding:20px;
+    border-radius: 10px;
+}
+
+button {
+    margin: 5px;
+  }
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+
+.btn-5 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: #F5D10D;
+}
+
+  .btn-5:hover {
+    color: #F5D10D;
+    background: transparent;
+    box-shadow:none;
+  }
+  .btn-5:before,
+  .btn-5:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #F5D10D;
+    box-shadow:
+    -1px -1px 5px 0px #fff,
+     7px 7px 20px 0px #0003,
+     4px 4px 5px 0px #0002;
+    transition:400ms ease all;
+  }
+  .btn-5:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-5:hover:before,
+  .btn-5:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  
+/* articles css */
+.wrap{
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+
+.category_box{
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+
+.article_box{
+    margin:auto;
+    position: relative;
+    align-items: center;
+    background-color: #F5D10D;
+    text-align: center;
+    width: 60%;
+    height: 90%;
+    padding:20px;
+    border-radius: 10px;
+}
+
+.card{
+    position: relative;
+    margin:auto;
+    border-radius: 20px;
+    background-color:white;
+    border:solid rgb(255, 255, 255) 1px;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+@media ( max-width : 767px) {
+
+    .article_box{
+        margin:auto;
+        position: relative;
+        align-items: center;
+        background-color: #F5D10D;
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        padding:20px;
+        border-radius: 10px;
+    }
+    
+    .card{
+        width:90%;
+        position: relative;
+        margin:20px auto 20px;
+        border-radius: 20px;
+        background-color:white;
+        border:solid white 1px;
+        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .articles{
+        position: relative;
+        margin:auto;
+        width:90%;
+    }
+}
+
+
+@media ( min-width : 768px) {
+        
+    .article_box{
+        margin:auto;
+        position: relative;
+        align-items: center;
+        background-color: #F5D10D;
+        text-align: center;
+        width: 60%;
+        height: 90%;
+        padding:20px;
+        border-radius: 10px;
+    }
+    .card{
+        position: relative;
+        margin:20px auto 20px;
+        border-radius: 20px;
+        background-color:white;
+        border: solid rgb(255, 255, 255) 1px;
+        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+
+}
+
+@media ( min-width : 992px) {
+    .article_box{  
+        width: 60%;
+    }
+
+}
+@media ( min-width : 1200px) {
+    .article_box{  
+        width: 60%;
+    }
+
+}
+
+
+.dropdown{
+    margin-left: 20px;
+}
+
+#pagination_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.category_box > button {
+    margin-top: 10px;
+    font-size: 23px;
+    width: 110px;
+}
+
+body, h2, span, h4, .btn {
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.page-link{
+    background-color:white;
+    color:black;
+    border:solid black 1px;
+}
+
+.active>.page-link, .page-link.active{
+    color: black;
+    background-color: #ffc107;
+    border-color:black;
+}
+
+.page-link:hover{
+    background-color:#ffc107;
+    border-color:black;
+
+}
+
+.form_div{
+    width:90%;
+    align-items: center;
+    display: inline-block;
+}
