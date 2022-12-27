@@ -23,33 +23,6 @@ window.onload = async function signincheck(){
     }
 }
 
-// async function get_articles(page_param) {
-//     if (page_param == '') {
-//         const response = await fetch(`${main_url}/article/${category_id}/`, {
-//             headers: {
-//                 "Authorization": "Bearer " + localStorage.getItem("access"),
-//                 "content-type": "application/json"
-//             },
-//             method: 'GET',
-//         })
-//         response_json = await response.json()
-//         return response_json
-
-//     } else {
-//         page = page_param.split('=')[1]
-//         const response = await fetch(`${main_url}/article/${category_id}/?page=${page}`, {
-//             headers: {
-//                 "Authorization": "Bearer " + localStorage.getItem("access"),
-//                 "content-type": "application/json"
-//             },
-//             method: 'GET',
-//         })
-//         response_json = await response.json()
-//         console.log(response_json)
-//     }
-//     return response_json
-// }
-
 window.onload = async function load_articles() {
 
     const response = await fetch(`${main_url}/article/alarm/`, {
@@ -65,20 +38,32 @@ window.onload = async function load_articles() {
 
     let articles_box = document.getElementById('articles')
     let output = ''
-    response_json.forEach(element => {
 
+    if (response_json == 0) {
         output += `
         <div class="card text-center" >
             <div class="card-body">
-                <p class="card-text" align="right">게시글에 새로운 댓글이 있습니다!
-                <a href="javascript:ignore(${element.id});" class="btn btn-warning btn-outline-dark">닫기</a></p>
-                <h5 class="card-title">${element.category} / ${element.mbti}</h5>
-                <p class="card-text">${element.content}</p>
-                <a href="javascript:save_article_id(${element.id});" class="btn btn-warning btn-outline-dark">댓글 보러 가기</a>
+                <h4 class="card-title">새로운 댓글이 없습니다!
+                    <img src="imgs/sadbee.jpg" style="width:100px; height:100px; margin-left:15px">
+                </h4>
             </div>
         </div>
         `
-    })
+    } else {
+        response_json.forEach(element => {
+            output += `
+            <div class="card text-center" >
+                <div class="card-body">
+                    <p class="card-text" align="right">게시글에 새로운 댓글이 있습니다!
+                    <a href="javascript:ignore(${element.id});" class="btn btn-warning btn-outline-dark">닫기</a></p>
+                    <h5 class="card-title">${element.category} / ${element.mbti}</h5>
+                    <p class="card-text">${element.content}</p>
+                    <a href="javascript:save_article_id(${element.id});" class="btn btn-warning btn-outline-dark">댓글 보러 가기</a>
+                </div>
+            </div>
+            `
+        })
+    }
     articles_box.innerHTML = output
 }
 
