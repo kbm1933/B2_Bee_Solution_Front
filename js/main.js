@@ -80,7 +80,7 @@ function go_profile(){
 // sns로 beesolution 공유하기
 function sns_share(sns) {
     var thisUrl = document.URL;
-    var snsTitle = "Beesolution 공유하기";
+    var snsTitle = "Beesolution에서 고민 해결할 사람?";
     if( sns == 'facebook' ) {
         var url = "http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(thisUrl);
         window.open(url, "", "width=486, height=286");
