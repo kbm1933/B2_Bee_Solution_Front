@@ -313,3 +313,9 @@ body, h4, .btn {
     align-items: center;
     display: inline-block;
 }
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+}

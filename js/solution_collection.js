@@ -17,12 +17,26 @@ window.onload = () => {
     alert('로그인 후 진행해주세요')
     window.location.replace("api.html")
     }
+    check_alarm();
 }
 
-// window.onload = function (){
-//     var del = document.getElementsByName("delete");
-//     del.onclick = deleteImg()
-// }
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
 
 async function load_solution_collection() {
     const payload = localStorage.getItem('payload')

@@ -29,10 +29,29 @@ const username = personObj['username']
 const category_id = localStorage.getItem('category_id')
 
 window.onload = () => {
+    check_alarm();
     loaduseruploadimg();
     load_articles();
     user_mbti();
     load_solution();
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
 }
 
 // 로딩 될때 user 이름과 프로필 사진을 불러옴

@@ -1,6 +1,32 @@
 const payload = localStorage.getItem('payload')
 
-window.onload = async function load_solutions(){
+const main_url = "http://127.0.0.1:8000"
+
+
+window.onload = () => {
+    check_alarm();
+    load_solutions();
+}
+
+async function check_alarm() {
+    const response = await fetch(`${main_url}/article/alarm/1/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'content-type': 'application/json',
+        },
+        method: 'GET'
+    })
+    console.log(response.status)
+    if (response.status == 200) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmon.png'
+    } else if(response.status == 204) {
+        const alarm_img = document.getElementById('alarm_img')
+        alarm_img.src = 'imgs/alarmoff.png'
+    }
+}
+
+async function load_solutions(){
 
     const main_url = "http://127.0.0.1:8000"
     const article_id = localStorage.getItem('article_id')

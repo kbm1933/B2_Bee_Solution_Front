@@ -267,5 +267,10 @@ body, h2, span, h4, .btn {
 .spinner-border{
     display: flex;
     margin:auto;
-    
+}
+
+.alarm-img {
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
 }
