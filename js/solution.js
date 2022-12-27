@@ -92,6 +92,7 @@ async function rating(solution_id, value) {
         })
 
     })
+    localStorage.setItem('category_id', 0)
     window.location.replace('articles.html')
 }
 

@@ -127,7 +127,7 @@ async function rating(solution_id, value) {
         })
     })
 
-    alert('평가완료')
+    alert('평가완료! AI 솔루션 추천에 반영됩니다!')
 }
 
 async function deleteImg(solution_id){
