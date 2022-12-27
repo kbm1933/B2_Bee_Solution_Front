@@ -31,7 +31,7 @@ async function load_message(check){
             msg_title.innerHTML = `<a class="msg_title" data-bs-toggle="modal" data-bs-target="#messageModal"><u>${element.title}</u></a>`
             msg_title.onclick=function(){ //title 누르면 content 모달 창 띄움
                 const modal_title = document.getElementById('messageModalLabel')
-                modal_title.textContent = `${element.title}   [보낸 사람 : ${element.sender}] `
+                modal_title.textContent = `${element.title}   [보낸 사람 : 익명의 사용자 ${element.sender}] `
     
                 const modal_content = document.getElementById('messageModalbody')
                 modal_content.textContent = `${element.content}`
@@ -59,7 +59,7 @@ async function load_message(check){
         
         
         const msg_sender = add_row.insertCell(1);
-        msg_sender.textContent = element.sender
+        msg_sender.textContent = '익명의 사용자 '+element.sender
         const msg_date = add_row.insertCell(2);
         msg_date.textContent =moment(element.created_at).format('LLL')
     }

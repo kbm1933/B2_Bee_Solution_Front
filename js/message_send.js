@@ -30,7 +30,7 @@ async function load_message(check){
         msg_title.onclick=function(){ //title 누르면 content 모달 창 띄움
 
             const modal_title = document.getElementById('messageModalLabel')
-            modal_title.textContent = `${element.title}   [받는 사람 : ${element.receiver}] `
+            modal_title.textContent = `${element.title}   [받는 사람 : 익명의 사용자 ${element.receiver}] `
 
             const modal_content = document.getElementById('messageModalbody')
             modal_content.textContent = `${element.content}`
@@ -49,7 +49,7 @@ async function load_message(check){
 
         }
         const msg_receiver = add_row.insertCell(1);
-        msg_receiver.textContent = element.receiver
+        msg_receiver.textContent = '익명의 사용자 '+element.receiver
         const msg_date = add_row.insertCell(2);
         msg_date.textContent = moment(element.created_at).format('LLL')
     }
