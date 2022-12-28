@@ -157,7 +157,7 @@ async function load_comments() {
     let dislike = 'https://cdn-icons-png.flaticon.com/512/1067/1067346.png'
 
     myComment_list.results.forEach(element => {
-        if (userId != element.user) {
+        if (userId != element.user.userchr.user) {
             if (element.likes.includes(userId)) {
 
                 output += `
