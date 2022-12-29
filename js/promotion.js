@@ -1,8 +1,5 @@
 const main_url = "http://127.0.0.1:8000"
-const payload = localStorage.getItem('payload')
-const personObj = JSON.parse(payload)
-const userId = personObj['user_id']
-const username = personObj['username']
+
 
 async function create_worry() {
     const category = document.getElementById('input_category')
@@ -31,11 +28,11 @@ async function create_worry() {
     .then((response) => response.json())
     .then(
         setTimeout(function () { 
-        loadingbar.style.display = "none"
-        signup_btn.style.display = "flex"
-        let sol_img = document.createElement('img')
-        sol_img.src = `${main_url}/media/${response.data[0]['solution_image']}`
-        img_box.appendChild(sol_img)
-        }, 1000)
+            loadingbar.style.display = "none"
+            signup_btn.style.display = "flex"
+            let sol_img = document.createElement('img')
+            sol_img.src = `${main_url}/media/${response.data[0]['solution_image']}`
+            img_box.appendChild(sol_img)
+            }, 1000)
         )
 }
